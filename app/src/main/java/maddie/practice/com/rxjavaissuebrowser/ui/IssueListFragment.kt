@@ -8,7 +8,12 @@ import android.view.ViewGroup
 import maddie.practice.com.rxjavaissuebrowser.R
 
 class IssueListFragment : Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.issue_list, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
     }
 }

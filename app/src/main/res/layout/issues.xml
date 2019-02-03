@@ -5,7 +5,7 @@
 
     <fragment
             android:name="maddie.practice.com.rxjavaissuebrowser.ui.IssueListFragment"
-            android:id="@+id/container"
+            android:id="@+id/issues_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

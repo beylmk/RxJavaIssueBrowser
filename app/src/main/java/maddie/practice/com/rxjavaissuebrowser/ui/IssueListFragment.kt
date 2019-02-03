@@ -2,6 +2,7 @@ package maddie.practice.com.rxjavaissuebrowser.ui
 
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
@@ -14,14 +15,14 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.issue_list.*
 import maddie.interviews.com.doordashlite.api.ResourceObserver
 import maddie.practice.com.rxjavaissuebrowser.R
-import maddie.practice.com.rxjavaissuebrowser.model.GithubIssue
-import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueListViewModel
+import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssue
 import javax.inject.Inject
 
 class IssueListFragment : Fragment() {
 
     companion object {
         private const val TAG = "IssueListFragment"
+        const val EXTRA_ISSUE_ID = "issue_id"
     }
 
     @Inject
@@ -54,7 +55,11 @@ class IssueListFragment : Fragment() {
         issues_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
-            adapter = IssueAdapter(issues)
+            adapter = IssueAdapter(issues) { issue ->
+                val commentsIntent = Intent(activity, IssueCommentsActivity::class.java)
+                commentsIntent.putExtra(EXTRA_ISSUE_ID, issue.id)
+                activity?.startActivity(commentsIntent)
+            }
             addItemDecoration(
                 DividerItemDecoration(
                     activity,

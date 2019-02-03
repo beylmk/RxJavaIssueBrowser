@@ -7,9 +7,9 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import maddie.interviews.com.doordashlite.api.AppExecutors
-import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueDao
+import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssueDao
 import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueDatabase
-import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueRepository
+import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssueRepository
 import maddie.practice.com.rxjavaissuebrowser.network.GithubWebService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

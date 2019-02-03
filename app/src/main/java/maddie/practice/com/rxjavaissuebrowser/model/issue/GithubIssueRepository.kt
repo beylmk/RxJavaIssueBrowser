@@ -1,9 +1,11 @@
-package maddie.practice.com.rxjavaissuebrowser.model
+package maddie.practice.com.rxjavaissuebrowser.model.issue
 
 import android.arch.lifecycle.LiveData
 import maddie.interviews.com.doordashlite.api.AppExecutors
 import maddie.interviews.com.doordashlite.api.NetworkBoundResource
 import maddie.interviews.com.doordashlite.api.Resource
+import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssue
+import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssueDao
 import maddie.practice.com.rxjavaissuebrowser.network.GithubWebService
 import retrofit2.Call
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package maddie.practice.com.rxjavaissuebrowser.model
+package maddie.practice.com.rxjavaissuebrowser.model.issue
 
 import android.arch.persistence.room.*
 import com.google.gson.annotations.SerializedName

@@ -7,7 +7,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
-import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueListViewModel;
+import maddie.practice.com.rxjavaissuebrowser.ui.GithubIssueListViewModel;
 
 @Module
 public abstract class ViewModelModule {

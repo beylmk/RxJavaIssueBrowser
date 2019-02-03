@@ -8,7 +8,7 @@ import android.arch.persistence.room.Query
 
 @Dao
 interface GithubIssueDao {
-    @Query("SELECT * from githubissue")
+    @Query("SELECT * from githubissue ORDER BY updatedTimestamp desc")
     abstract fun getRxJavaIssues(): LiveData<List<GithubIssue>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

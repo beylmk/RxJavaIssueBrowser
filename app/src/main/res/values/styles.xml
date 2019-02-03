@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="IssueTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/issue_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="IssueBody" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/issue_body_text_size</item>
+        <item name="android:maxLength">@integer/max_length_issue_body</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

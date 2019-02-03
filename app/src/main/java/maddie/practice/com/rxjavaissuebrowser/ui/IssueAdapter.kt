@@ -18,7 +18,6 @@ class IssueAdapter(val issues: List<GithubIssue>) : RecyclerView.Adapter<IssueAd
 
     override fun getItemCount(): Int = issues.size
 
-
     override fun onBindViewHolder(viewHolder: IssueViewHolder, position: Int) {
         val issue = issues[position]
 

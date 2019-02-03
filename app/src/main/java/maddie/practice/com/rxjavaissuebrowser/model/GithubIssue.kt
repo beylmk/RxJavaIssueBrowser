@@ -1,8 +1,7 @@
 package maddie.practice.com.rxjavaissuebrowser.model
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
+import com.google.gson.annotations.SerializedName
 
 @Entity
 data class GithubIssue (
@@ -12,5 +11,8 @@ data class GithubIssue (
     @ColumnInfo
     val title: String,
     @ColumnInfo
-    val body: String
+    val body: String,
+    @ColumnInfo
+    @SerializedName("updated_at")
+    val updatedTimestamp: String
 )

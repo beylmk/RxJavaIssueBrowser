@@ -72,7 +72,6 @@ class IssueListFragment : Fragment() {
         toggleListVisibility(false)
     }
 
-
     private fun toggleListVisibility(shouldShowList: Boolean) {
         swipe_container.isRefreshing = !shouldShowList
         issues_recycler_view.visibility = if (shouldShowList) View.VISIBLE else View.GONE

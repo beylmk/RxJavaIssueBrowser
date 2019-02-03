@@ -10,4 +10,7 @@ import android.arch.persistence.room.Query
 interface GithubIssueDao {
     @Query("SELECT * from githubissue")
     abstract fun getRxJavaIssues(): LiveData<List<GithubIssue>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertAll(issues: List<GithubIssue>)
 }

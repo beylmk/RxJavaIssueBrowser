@@ -17,7 +17,7 @@ AppExecutors) {
         return object : NetworkBoundResource<List<GithubIssue>>(executor) {
             override fun saveNetworkCallResult(data: List<GithubIssue>?) {
                 if (data != null && !data.isEmpty()) {
-//                    githubIssueDao.insertAll(data)
+                    githubIssueDao.insertAll(data)
                 }
             }
 

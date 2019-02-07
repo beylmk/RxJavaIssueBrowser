@@ -1,4 +1,4 @@
-package maddie.practice.com.rxjavaissuebrowser.ui
+package maddie.practice.com.rxjavaissuebrowser.ui.issue
 
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -15,7 +15,8 @@ import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.issue_list.*
 import maddie.interviews.com.doordashlite.api.ResourceObserver
 import maddie.practice.com.rxjavaissuebrowser.R
-import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssue
+import maddie.practice.com.rxjavaissuebrowser.model.issue.Issue
+import maddie.practice.com.rxjavaissuebrowser.ui.comment.CommentsActivity
 import javax.inject.Inject
 
 class IssueListFragment : Fragment() {
@@ -27,7 +28,7 @@ class IssueListFragment : Fragment() {
 
     @Inject
     lateinit var githubIssueListViewModelFactory: ViewModelProvider.Factory
-    private lateinit var githubIssueListViewModel: GithubIssueListViewModel
+    private lateinit var issueListViewModel: IssueListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.issue_list, container, false)
@@ -37,8 +38,8 @@ class IssueListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         AndroidSupportInjection.inject(this)
 
-        githubIssueListViewModel = ViewModelProviders.of(this, githubIssueListViewModelFactory).get(GithubIssueListViewModel::class.java)
-        githubIssueListViewModel.getRxJavaIssues().observe(
+        issueListViewModel = ViewModelProviders.of(this, githubIssueListViewModelFactory).get(IssueListViewModel::class.java)
+        issueListViewModel.getRxJavaIssues().observe(
             this, ResourceObserver(
             TAG,
             hideLoading = ::hideLoading,
@@ -47,17 +48,17 @@ class IssueListFragment : Fragment() {
             onError = ::showErrorMessage
         ))
         swipe_container.setOnRefreshListener {
-            githubIssueListViewModel.refresh()
+            issueListViewModel.refresh()
         }
     }
 
-    private fun setUpIssueList(issues: List<GithubIssue>) {
+    private fun setUpIssueList(issues: List<Issue>) {
         issues_recycler_view.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
             adapter = IssueAdapter(issues) { issue ->
-                val commentsIntent = Intent(activity, IssueCommentsActivity::class.java)
-                commentsIntent.putExtra(EXTRA_ISSUE_ID, issue.id)
+                val commentsIntent = Intent(activity, CommentsActivity::class.java)
+                commentsIntent.putExtra(EXTRA_ISSUE_ID, issue.number)
                 activity?.startActivity(commentsIntent)
             }
             addItemDecoration(

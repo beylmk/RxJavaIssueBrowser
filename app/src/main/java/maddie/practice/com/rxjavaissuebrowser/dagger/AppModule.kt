@@ -7,9 +7,11 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import maddie.interviews.com.doordashlite.api.AppExecutors
-import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssueDao
+import maddie.practice.com.rxjavaissuebrowser.model.issue.IssueDao
 import maddie.practice.com.rxjavaissuebrowser.model.GithubIssueDatabase
-import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssueRepository
+import maddie.practice.com.rxjavaissuebrowser.model.comment.CommentDao
+import maddie.practice.com.rxjavaissuebrowser.model.comment.CommentRepository
+import maddie.practice.com.rxjavaissuebrowser.model.issue.IssueRepository
 import maddie.practice.com.rxjavaissuebrowser.network.GithubWebService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,15 +33,27 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideGithubIssueDao(database: GithubIssueDatabase): GithubIssueDao {
+    fun provideGithubIssueDao(database: GithubIssueDatabase): IssueDao {
         return database.githubIssueDao()
     }
 
     @Provides
     @Singleton
-    fun provideGithubIssueRepository(webservice: GithubWebService, githubIssueDao: GithubIssueDao, executor: AppExecutors):
-        GithubIssueRepository {
-        return GithubIssueRepository(webservice, githubIssueDao, executor)
+    fun provideGithubIssueRepository(webservice: GithubWebService, issueDao: IssueDao, executor: AppExecutors):
+        IssueRepository {
+        return IssueRepository(webservice, issueDao, executor)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCommentDao(database: GithubIssueDatabase): CommentDao {
+        return database.commentDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGithubCommentRepository(webservice: GithubWebService, commentDao: CommentDao, executor: AppExecutors): CommentRepository {
+        return CommentRepository(webservice, commentDao, executor)
     }
 
     @Provides

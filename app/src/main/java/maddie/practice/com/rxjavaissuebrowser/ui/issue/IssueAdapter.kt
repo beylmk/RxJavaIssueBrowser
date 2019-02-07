@@ -1,4 +1,4 @@
-package maddie.practice.com.rxjavaissuebrowser.ui
+package maddie.practice.com.rxjavaissuebrowser.ui.issue
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.issue_row.view.*
 import maddie.practice.com.rxjavaissuebrowser.R
-import maddie.practice.com.rxjavaissuebrowser.model.issue.GithubIssue
+import maddie.practice.com.rxjavaissuebrowser.model.issue.Issue
 
 class IssueAdapter(
-    val issues: List<GithubIssue>,
-    private val issueClickCallback: ((GithubIssue) -> Unit)?
+    val issues: List<Issue>,
+    private val issueClickCallback: ((Issue) -> Unit)?
 ) : RecyclerView.Adapter<IssueAdapter.IssueViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueViewHolder {

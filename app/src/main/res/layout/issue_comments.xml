@@ -5,7 +5,7 @@
 
     <fragment
             android:id="@+id/comments_container"
-            android:name="maddie.practice.com.rxjavaissuebrowser.ui.IssueCommentsFragment"
+            android:name="maddie.practice.com.rxjavaissuebrowser.ui.comment.CommentsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

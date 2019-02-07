@@ -4,10 +4,12 @@ import android.arch.persistence.room.*
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class GithubIssue (
+data class Issue (
     @PrimaryKey
     @ColumnInfo
     val id: Long,
+    @ColumnInfo
+    val number: Int,
     @ColumnInfo
     val title: String,
     @ColumnInfo

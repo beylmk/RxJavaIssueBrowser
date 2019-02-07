@@ -1,22 +1,22 @@
-package maddie.practice.com.rxjavaissuebrowser.ui
+package maddie.practice.com.rxjavaissuebrowser.ui.comment
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import maddie.practice.com.rxjavaissuebrowser.R
-import maddie.practice.com.rxjavaissuebrowser.ui.IssueListFragment.Companion.EXTRA_ISSUE_ID
+import maddie.practice.com.rxjavaissuebrowser.ui.issue.IssueListFragment.Companion.EXTRA_ISSUE_ID
 
-class IssueCommentsActivity : AppCompatActivity() {
+class CommentsActivity : AppCompatActivity() {
 
-    var issueId: Long? = null
+    var issueNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.issue_comments)
 
         if (intent.hasExtra(EXTRA_ISSUE_ID)) {
-            issueId = intent.getLongExtra(EXTRA_ISSUE_ID, 0L)
+            issueNumber = intent.getIntExtra(EXTRA_ISSUE_ID, 0)
         }
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

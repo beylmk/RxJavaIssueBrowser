@@ -1,4 +1,4 @@
-package maddie.practice.com.rxjavaissuebrowser.ui
+package maddie.practice.com.rxjavaissuebrowser.ui.issue
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

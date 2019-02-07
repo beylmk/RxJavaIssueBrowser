@@ -7,15 +7,21 @@ import android.arch.lifecycle.ViewModelProvider;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
-import maddie.practice.com.rxjavaissuebrowser.ui.GithubIssueListViewModel;
+import maddie.practice.com.rxjavaissuebrowser.ui.comment.CommentsViewModel;
+import maddie.practice.com.rxjavaissuebrowser.ui.issue.IssueListViewModel;
 
 @Module
 public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(GithubIssueListViewModel.class)
-    abstract ViewModel bindGithubIssueListViewModel(GithubIssueListViewModel githubIssueListViewModel);
+    @ViewModelKey(IssueListViewModel.class)
+    abstract ViewModel bindGithubIssueListViewModel(IssueListViewModel issueListViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CommentsViewModel.class)
+    abstract ViewModel bindCommentsViewModel(CommentsViewModel commentsViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(FactoryViewModel factory);

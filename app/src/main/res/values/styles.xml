@@ -15,7 +15,6 @@
 
     <style name="IssueBody" parent="@android:style/Widget.TextView">
         <item name="android:textSize">@dimen/issue_body_text_size</item>
-        <item name="android:maxLength">@integer/max_length_issue_body</item>
         <item name="android:ellipsize">end</item>
     </style>
 

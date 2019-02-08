@@ -27,7 +27,7 @@ class IssueAdapter(
 
         with(viewHolder.itemView) {
             issue_title.text = issue.title
-            issue_body.text = issue.body
+            issue_body.text = issue.body.take(context.resources.getInteger(R.integer.max_length_issue_body))
             setOnClickListener{
                 issueClickCallback?.invoke(issue)
             }

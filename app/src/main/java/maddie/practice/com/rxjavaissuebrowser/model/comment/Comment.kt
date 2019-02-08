@@ -20,6 +20,6 @@ data class Comment(
 )
 
 data class User(
-    @SerializedName("id")
+    @SerializedName("login")
     val name: String
 )

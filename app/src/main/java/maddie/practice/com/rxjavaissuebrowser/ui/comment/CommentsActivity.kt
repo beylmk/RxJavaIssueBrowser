@@ -12,7 +12,7 @@ class CommentsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.issue_comments)
+        setContentView(R.layout.comments)
 
         if (intent.hasExtra(EXTRA_ISSUE_ID)) {
             issueNumber = intent.getIntExtra(EXTRA_ISSUE_ID, 0)

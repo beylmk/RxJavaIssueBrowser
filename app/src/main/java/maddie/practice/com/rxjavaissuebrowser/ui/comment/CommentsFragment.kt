@@ -4,13 +4,12 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.android.synthetic.main.issue_list.*
+import kotlinx.android.synthetic.main.comments_list.*
 import maddie.interviews.com.doordashlite.api.ResourceObserver
 import maddie.practice.com.rxjavaissuebrowser.R
 import maddie.practice.com.rxjavaissuebrowser.model.comment.Comment
@@ -26,7 +25,7 @@ class CommentsFragment : Fragment() {
     private lateinit var commentViewModel: CommentsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.issue_comments_list, container, false)
+        return inflater.inflate(R.layout.comments_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -50,10 +49,10 @@ class CommentsFragment : Fragment() {
 
     }
 
-    //TODO have issuelist and comments fragment extend from BaseSwipeToRefreshFragment
-
     private fun setUpComments(comments: List<Comment>) {
-        Log.e(TAG, comments.toString())
+        comments_text.text = comments.joinToString(separator = getString(R.string.comments_separator)) { comment ->
+            comment.user.name + ": " + comment.body
+        }
     }
 
     private fun hideLoading() {
@@ -66,9 +65,7 @@ class CommentsFragment : Fragment() {
 
     private fun toggleListVisibility(shouldShowList: Boolean) {
         swipe_container.isRefreshing = !shouldShowList
-        comments_list.text = comments.joinToString { comment ->
-            comment.body + comment.user.name
-        }
+        comments_text.visibility = if (shouldShowList) View.VISIBLE else View.GONE
     }
 
     private fun showErrorMessage(error: String) {

@@ -10,8 +10,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class IssueRepository  @Inject constructor(val webService: GithubWebService, val issueDao: IssueDao, val executor:
-AppExecutors) {
+class IssueRepository @Inject constructor(
+    val webService: GithubWebService,
+    val issueDao: IssueDao,
+    val executor: AppExecutors
+) {
 
     fun getIssues(): LiveData<Resource<List<Issue>>> {
         return object : NetworkBoundResource<List<Issue>>(executor) {

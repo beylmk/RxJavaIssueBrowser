@@ -12,9 +12,11 @@ import javax.inject.Singleton
 
 @Singleton
 class CommentRepository @Inject constructor(
-    val webService: GithubWebService, val commentDao: CommentDao, val executor:
-    AppExecutors
+    val webService: GithubWebService,
+    val commentDao: CommentDao,
+    val executor: AppExecutors
 ) {
+
     fun getCommentsByIssueNumber(issueNumber: Int): LiveData<Resource<List<Comment>>> {
         return object : NetworkBoundResource<List<Comment>>(executor) {
             override fun saveNetworkCallResult(data: List<Comment>?) {

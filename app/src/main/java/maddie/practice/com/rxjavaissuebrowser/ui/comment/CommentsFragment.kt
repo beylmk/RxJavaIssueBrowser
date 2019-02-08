@@ -46,11 +46,12 @@ class CommentsFragment : Fragment() {
         swipe_container.setOnRefreshListener {
             commentViewModel.refresh()
         }
-
     }
 
     private fun setUpComments(comments: List<Comment>) {
-        comments_text.text = comments.joinToString(separator = getString(R.string.comments_separator)) { comment ->
+        comments_text.text = comments.joinToString(
+            separator = getString(R.string.comments_separator)
+        ) { comment ->
             comment.user.name + ": " + comment.body
         }
     }

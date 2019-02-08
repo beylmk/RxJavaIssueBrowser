@@ -66,6 +66,9 @@ class CommentsFragment : Fragment() {
 
     private fun toggleListVisibility(shouldShowList: Boolean) {
         swipe_container.isRefreshing = !shouldShowList
+        comments_list.text = comments.joinToString { comment ->
+            comment.body + comment.user.name
+        }
     }
 
     private fun showErrorMessage(error: String) {
